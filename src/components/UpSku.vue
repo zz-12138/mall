@@ -22,6 +22,7 @@ export default {
   methods: {
     onAddCartClicked(skuData) {
       this.$emit('onAddCartClicked', skuData)
+      this.show = !this.show
     }
   }
 };

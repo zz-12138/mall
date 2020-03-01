@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { SubmitBar, Checkbox } from "vant";
+import { SubmitBar, Checkbox, Toast } from "vant";
 
 import { mapGetters } from "vuex";
 
@@ -32,11 +32,20 @@ export default {
   },
   components: {
     [SubmitBar.name]: SubmitBar,
-    [Checkbox.name]: Checkbox
+    [Checkbox.name]: Checkbox,
+    [Toast.name]: Toast
   },
   methods: {
     onSubmit() {
-      console.log("提交订单");
+      if(this.totalPrice == 0.00) {
+        Toast('还未勾选商品-_-');
+      }else{
+        Toast('提交成功>_<');
+        // 打印选中商品对象
+        // console.log(this.cartList.filter(item => {
+        //   return item.checked
+        // }))
+      }
     },
     change() {
       if (this.checked) {
