@@ -1,0 +1,16 @@
+<template>
+  <div>
+      <slot></slot>
+  </div>
+</template>
+
+<script>
+
+export default {
+    name: 'ListCart'
+}
+</script>
+
+<style>
+
+</style>

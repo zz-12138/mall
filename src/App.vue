@@ -1,28 +1,35 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <keep-alive exclude="Detail">
+      <router-view />
+    </keep-alive>
+    <tab-bar v-if="navBarShow" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import TabBar from "components/TabBar";
 
 export default {
-  name: 'App',
+  name: "App",
+  data() {
+    return {
+      navBarShow: true
+    };
+  },
   components: {
-    HelloWorld
+    TabBar
+  },
+  watch: {
+    $route() {
+      // 监听tabbar显示与隐藏
+      // console.log(this.$route.name);
+      this.navBarShow = this.$route.name !== 'detail'
+    }
   }
-}
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+@import "assets/base.css";
 </style>
